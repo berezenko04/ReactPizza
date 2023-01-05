@@ -1,0 +1,114 @@
+.pizzaBlock {
+    text-align: center;
+    width: 280px;
+    padding-bottom: 60px;
+
+    &__image {
+        object-fit: cover;
+        object-position: center;
+        width: 260px;
+        height: 260px;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        &__title {
+            font-size: 20px;
+            font-weight: 900;
+        }
+
+        &__selector {
+            display: flex;
+            background-color: #f3f3f3;
+            border-radius: 10px;
+            flex-direction: column;
+            padding: 6px;
+            gap: 7px;
+
+            ul {
+                display: flex;
+                flex: 1;
+
+                li {
+                    padding: 8px;
+                    flex: 1;
+                    cursor: pointer;
+                    font-weight: 600;
+                    font-size: 14px;
+                    user-select: none;
+                }
+
+                .active {
+                    background: #ffffff;
+                    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+                    border-radius: 5px;
+                    cursor: auto
+                }
+            }
+        }
+
+        &__bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            &__price {
+                font-weight: 800;
+                font-size: 22px;
+                line-height: 27px;
+                letter-spacing: 0.015em
+            }
+
+            &__add {
+                background-color: transparent;
+                border: 1px solid #fe5f1e;
+                border-radius: 30px;
+                padding: 9px 15px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                transition: all .15s ease-in-out;
+
+                &:hover {
+                    background-color: #fe5f1e;
+
+                    span {
+                        color: #fff;
+                    }
+
+                    svg path {
+                        fill: #fff;
+                    }
+                }
+
+                span {
+                    color: #EB5A1E;
+                    font-weight: 700;
+                    font-size: 16px;
+                    line-height: 19px;
+                }
+
+                .plusIcon {
+                    width: 12px;
+                    height: 12px;
+                }
+
+                i {
+                    border-radius: 30px;
+                    background-color: #fe5f1e;
+                    color: #fff;
+                    font-weight: 600;
+                    width: 22px;
+                    height: 22px;
+                    font-style: normal;
+                    font-size: 13px;
+                    line-height: 22px;
+                }
+            }
+        }
+    }
+
+}

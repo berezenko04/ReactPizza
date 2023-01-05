@@ -1,0 +1,69 @@
+.header {
+    border-bottom: 1px solid #f6f6f6;
+    padding: 40px 0;
+
+    .wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between
+    }
+
+    &__logo {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        .pizzaLogo {
+            width: 38px;
+            height: 38px;
+        }
+
+        h1 {
+            color: #181818;
+            font-size: 24px;
+            letter-spacing: 1%;
+            text-transform: uppercase;
+            font-weight: 800
+        }
+
+        p {
+            color: #7b7b7b
+        }
+    }
+
+    &__cart {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        background-color: #fe5f1e;
+        border-radius: 30px;
+        padding: 10px 20px;
+        transition: all .15s ease-in-out;
+
+        &:hover {
+            background-color: #f24701
+        }
+
+        &:active {
+            background-color: #de4101;
+            transform: translateY(1px)
+        }
+
+        span {
+            color: #FFFFFF;
+            font-weight: 700;
+        }
+
+        &__delimiter {
+            width: 1px;
+            height: 25px;
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+
+        &__items {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+    }
+}

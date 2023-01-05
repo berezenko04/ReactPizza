@@ -1,0 +1,75 @@
+@import './scss/reset';
+
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url("./fonts/ProximaNova-Black.eot");
+    src: local("./fonts/Proxima Nova Black"), local("ProximaNova-Black"), url("./fonts/ProximaNova-Black.eot?#iefix") format("embedded-opentype"), url("./fonts/ProximaNova-Black.woff") format("woff"), url("./fonts/ProximaNova-Black.ttf") format("truetype");
+    font-weight: 900;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url("./fonts/ProximaNova-Bold.eot");
+    src: local("./fonts/Proxima Nova Bold"), local("ProximaNova-Bold"), url("./fonts/ProximaNova-Bold.eot?#iefix") format("embedded-opentype"), url("./fonts/ProximaNova-Bold.woff") format("woff"), url("./fonts/ProximaNova-Bold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url("./fonts/ProximaNova-Regular.eot");
+    src: local("./fonts/Proxima Nova Regular"), local("ProximaNova-Regular"), url("./fonts/ProximaNova-Regular.eot?#iefix") format("embedded-opentype"), url("./fonts/ProximaNova-Regular.woff") format("woff"), url("./fonts/ProximaNova-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url("./fonts/ProximaNova-Extrabld.eot");
+    src: local("./fonts/Proxima Nova Extrabold"), local("ProximaNova-Extrabld"), url("./fonts/ProximaNova-Extrabld.eot?#iefix") format("embedded-opentype"), url("./fonts/ProximaNova-Extrabld.woff") format("woff"), url("./fonts/ProximaNova-Extrabld.ttf") format("truetype");
+    font-weight: 800;
+    font-style: normal
+}
+
+#root {
+    background-color: #FFDF8C;
+    padding: 45px;
+}
+
+.wrapper {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    max-width: 1340px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.container {
+    padding: 0 50px;
+    max-width: 1340px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: #FFDF8C;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background-color: #FFDF8C;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #777;
+}

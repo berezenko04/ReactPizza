@@ -1,0 +1,28 @@
+.categories {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    li {
+        background-color: #f9f9f9;
+        padding: 13px 30px;
+        border-radius: 30px;
+        font-weight: bold;
+        transition: background-color 0.1s ease-in-out;
+        user-select: none;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #f4f4f4;
+        }
+
+        &:active {
+            background-color: #ececec;
+        }
+    }
+
+    .active {
+        background-color: #282828;
+        color: #fff;
+    }
+}
