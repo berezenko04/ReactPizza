@@ -4,6 +4,7 @@ import './App.scss'
 
 import Home from './pages/Home/Home'
 import Cart from './pages/Cart/Cart'
+import NotFound from './pages/NotFound/NotFound'
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <Routes>
         <Route exact path='/' element={<Home />} />
         <Route exact path='/cart' element={<Cart />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </div>
   )

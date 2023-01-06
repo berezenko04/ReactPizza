@@ -6,6 +6,11 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: 35px;
+
+        @media screen and (max-width: 1300px) {
+            flex-direction: column;
+        }
     }
 
     &__title {
@@ -22,5 +27,7 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 35px;
+        row-gap: 60px;
+        place-items: center;
     }
 }

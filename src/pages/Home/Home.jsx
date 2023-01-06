@@ -7,25 +7,31 @@ import Header from '../../components/Header/Header'
 import Sort from '../../components/Sort/Sort'
 import PizzaCard from '../../components/PizzaCard/PizzaCard'
 import PizzaService from '../../API/PizzaService/PizzaService'
+import SkeletonCard from '../../components/SkeletonCard/SkeletonCard'
 
 const Home = () => {
 
+    const [items, setItems] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
     useEffect(() => {
-        async function fetchData() {
-            try {
-                PizzaService.getPizza()
-                    .then(response => {
-                        setItems(response.data);
-                    })
-            } catch (error) {
-                alert('Ошибка при запросе данных :(');
-                console.error(error);
-            }
-        }
-        fetchData();
+        // async function fetchData() {
+        //     try {
+        //         
+        //     } catch (error) {
+        //         alert('Ошибка при запросе данных :(');
+        //         console.error(error);
+        //     }
+        // }
+        PizzaService.getPizza()
+            .then(response => {
+                setItems(response.data);
+                setIsLoading(false);
+            })
+
+        // fetchData();
     }, [])
 
-    const [items, setItems] = useState([]);
 
     return (
         <>
@@ -38,12 +44,16 @@ const Home = () => {
                     </div>
                     <h2 className={styles.content__title}>Все пиццы</h2>
                     <div className={styles.content__items}>
-                        {items.map((pizza) => (
-                            <PizzaCard
-                                key={pizza.id}
-                                {...pizza}
-                            />
-                        ))}
+                        {isLoading ? [...new Array(8)].map((_, index) => (
+                            <SkeletonCard key={index} />
+                        )) :
+                            items.map((pizza) => (
+                                < PizzaCard
+                                    key={pizza.id}
+                                    {...pizza}
+                                />
+                            ))
+                        }
                     </div>
                 </div>
             </div>

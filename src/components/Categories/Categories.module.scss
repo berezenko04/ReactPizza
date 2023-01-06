@@ -1,7 +1,14 @@
 .categories {
     display: flex;
     align-items: center;
-    gap: 13px;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    @media screen and (max-width: 980px) {
+        max-width: 630px;
+        width: 100%;
+    }
 
     li {
         background-color: #f9f9f9;
@@ -11,8 +18,14 @@
         transition: background-color 0.1s ease-in-out;
         user-select: none;
         cursor: pointer;
+        font-size: 16px;
 
-        &:hover {
+        @media screen and (max-width: 615px) {
+            padding: 10px 20px;
+            font-size: 14px;
+        }
+
+        &:hover:not(.active) {
             background-color: #f4f4f4;
         }
 

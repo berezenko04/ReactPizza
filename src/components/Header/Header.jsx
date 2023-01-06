@@ -20,11 +20,11 @@ const Header = ({ isCart }) => {
                     </Link>
                     {isCart &&
                         <Link to='/cart' className={styles.header__cart}>
-                            <span>520 ₴</span>
+                            <span>0 ₴</span>
                             <div className={styles.header__cart__delimiter}></div>
                             <div className={styles.header__cart__items}>
                                 <CartIcon className={styles.cartIcon} />
-                                <span>3</span>
+                                <span>0</span>
                             </div>
                         </Link>
                     }

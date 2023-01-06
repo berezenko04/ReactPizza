@@ -1,10 +1,17 @@
 import PropTypes from 'prop-types'
+import { useState } from 'react'
 
 import styles from './PizzaCard.module.scss'
 
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 
-const PizzaCard = ({ imageUrl, title, price }) => {
+
+const PizzaCard = ({ imageUrl, title, price, sizes, types }) => {
+
+    const [activeType, setActiveType] = useState(0);
+    const [activeSize, setActiveSize] = useState(0);
+
+    const typeNames = ['тонкое', 'традиционное'];
     return (
         <div className={styles.pizzaBlock}>
             <img
@@ -16,13 +23,14 @@ const PizzaCard = ({ imageUrl, title, price }) => {
                 <h4 className={styles.pizzaBlock__content__title}>{title}</h4>
                 <div className={styles.pizzaBlock__content__selector}>
                     <ul>
-                        <li className={styles.active}>тонкое</li>
-                        <li>традиционное</li>
+                        {types.map((type, index) => (
+                            <li onClick={() => setActiveType(index)} className={activeType === index ? styles.active : null} key={index}>{typeNames[type]}</li>
+                        ))}
                     </ul>
                     <ul>
-                        <li className={styles.active}>26 см.</li>
-                        <li>30 см.</li>
-                        <li>40 см.</li>
+                        {sizes.map((size, index) => (
+                            <li onClick={() => setActiveSize(index)} className={activeSize === index ? styles.active : null} key={index}>{size} см</li>
+                        ))}
                     </ul>
                 </div>
                 <div className={styles.pizzaBlock__content__bottom}>
@@ -34,14 +42,15 @@ const PizzaCard = ({ imageUrl, title, price }) => {
                     </button>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
 PizzaCard.propTypes = {
     imgUrl: PropTypes.string,
     title: PropTypes.string,
-    price: PropTypes.number
+    price: PropTypes.number,
+    sizes: PropTypes.array
 }
 
 export default PizzaCard
