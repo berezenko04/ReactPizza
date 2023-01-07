@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import PropTypes from 'prop-types'
+
 import styles from './Categories.module.scss'
 
-const Categories = () => {
+const Categories = ({ value, onClickCategory }) => {
 
-    const [isActive, setIsActive] = useState(0);
+
 
     const categories = [
         'Все',
@@ -16,11 +17,22 @@ const Categories = () => {
 
     return (
         <ul className={styles.categories}>
-            {categories.map((item, index) => (
-                <li key={index} onClick={() => setIsActive(index)} className={isActive === index ? styles.active : null}>{item}</li>
+            {categories.map((category, index) => (
+                <li
+                    key={index}
+                    onClick={() => onClickCategory(index)}
+                    className={value === index ? styles.active : null}
+                >
+                    {category}
+                </li>
             ))}
         </ul>
     )
+}
+
+Categories.propTypes = {
+    value: PropTypes.number,
+    onClickCategory: PropTypes.func
 }
 
 export default Categories

@@ -1,26 +1,29 @@
-import styles from './Sort.module.scss'
 import { useState } from 'react'
+import PropTypes from 'prop-types'
+
+
+import styles from './Sort.module.scss'
+
 
 import { ReactComponent as SortIcon } from '../../assets/icons/arrow-top.svg'
 
 
-const Sort = () => {
+const Sort = ({ value, onClickSort }) => {
 
     const [isOpened, setIsOpened] = useState(false);
-    const [isCategoryActive, setIsCategoryActive] = useState(0);
+
 
     const categories = [
-        'популярности',
-        'цене',
-        'алфавиту'
+        { name: 'популярности ↑', sortProperty: 'rating', orderProperty: 'desc' },
+        { name: 'популярности ↓', sortProperty: 'rating', orderProperty: 'asc' },
+        { name: 'цене ↑', sortProperty: 'price', orderProperty: 'desc' },
+        { name: 'цене ↓', sortProperty: 'price', orderProperty: 'asc' },
+        { name: 'алфавиту ↑', sortProperty: 'title', orderProperty: 'desc' },
+        { name: 'алфавиту ↓', sortProperty: 'title', orderProperty: 'asc' }
     ];
 
-    const handleSortClick = () => {
-        setIsOpened(!isOpened);
-    }
-
     const handleCategoryClick = (i) => {
-        setIsCategoryActive(i);
+        onClickSort(i);
         setIsOpened(false);
     }
 
@@ -29,18 +32,19 @@ const Sort = () => {
             <div className={styles.sort__label}>
                 <SortIcon className={`${styles.sortIcon} ${isOpened && styles.sortIcon__active}`} />
                 <b>Сортировка по:</b>
-                <span onClick={handleSortClick}>{categories[isCategoryActive]}</span>
+                <span onClick={() => setIsOpened(!isOpened)}>{value.name}</span>
             </div >
-            {isOpened &&
+            {
+                isOpened &&
                 <div className={styles.sort__popup}>
                     <ul>
-                        {categories.map((category, index) => (
+                        {categories.map((obj, index) => (
                             <li
                                 key={index}
-                                className={isCategoryActive === index ? styles.active : null}
-                                onClick={() => handleCategoryClick(index)}
+                                className={value.name === categories[index].name ? styles.active : null}
+                                onClick={() => handleCategoryClick(obj)}
                             >
-                                {category}
+                                {obj.name}
                             </li>
                         ))}
                     </ul >
@@ -48,6 +52,11 @@ const Sort = () => {
             }
         </div >
     )
+}
+
+Sort.propTypes = {
+    value: PropTypes.object,
+    onClickSort: PropTypes.func
 }
 
 export default Sort

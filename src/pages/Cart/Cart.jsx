@@ -36,7 +36,7 @@ const Cart = () => {
                                             </div>
                                             <img src={EmptyCart} alt="Empty cart" />
                                         </div>
-                                        <Link to='/' className={styles.cartEmpty__button}>Вернутьcя назад</Link>
+                                        <Link to='/ReactPizza' className={styles.cartEmpty__button}>Вернутьcя назад</Link>
                                     </div>
                                 )
                                 : (
@@ -62,7 +62,7 @@ const Cart = () => {
                                                 <span> Сумма заказа: <b className={styles.summary}>900 ₴</b> </span>
                                             </div>
                                             <div className={styles.content__cart__bottom__buttons}>
-                                                <Link to='/' className={styles.content__cart__bottom__buttons__back}>
+                                                <Link to='/ReactPizza' className={styles.content__cart__bottom__buttons__back}>
                                                     <BackIcon />
                                                     <span>Вернуться назад</span>
                                                 </Link>

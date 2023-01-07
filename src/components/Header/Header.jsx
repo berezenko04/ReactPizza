@@ -11,7 +11,7 @@ const Header = ({ isCart }) => {
         <header className={styles.header}>
             <div className="container">
                 <div className={styles.wrapper}>
-                    <Link to='/' className={styles.header__logo}>
+                    <Link to='/ReactPizza' className={styles.header__logo}>
                         <PizzaLogo className={styles.pizzaLogo} />
                         <div>
                             <h1>React Pizza</h1>
@@ -19,7 +19,7 @@ const Header = ({ isCart }) => {
                         </div>
                     </Link>
                     {isCart &&
-                        <Link to='/cart' className={styles.header__cart}>
+                        <Link to='/ReactPizza/cart' className={styles.header__cart}>
                             <span>0 ₴</span>
                             <div className={styles.header__cart__delimiter}></div>
                             <div className={styles.header__cart__items}>

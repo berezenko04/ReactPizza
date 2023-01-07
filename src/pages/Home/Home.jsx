@@ -13,25 +13,29 @@ const Home = () => {
 
     const [items, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [sortType, setSortType] = useState({
+        name: 'популярности ↑', sortProperty: 'rating', orderProperty: 'desc'
+    });
+    const [categoryId, setCategoryId] = useState(0);
+
 
     useEffect(() => {
-        // async function fetchData() {
-        //     try {
-        //         
-        //     } catch (error) {
-        //         alert('Ошибка при запросе данных :(');
-        //         console.error(error);
-        //     }
-        // }
-        PizzaService.getPizza()
-            .then(response => {
-                setItems(response.data);
-                setIsLoading(false);
-            })
-
-        // fetchData();
-    }, [])
-
+        async function fetchData() {
+            try {
+                setIsLoading(true);
+                PizzaService.getPizza(categoryId, sortType)
+                    .then(response => {
+                        setItems(response.data);
+                        setIsLoading(false);
+                    })
+            } catch (error) {
+                alert('Ошибка при запросе данных :(');
+                console.error(error);
+            }
+        }
+        window.scrollTo(0, 0);
+        fetchData();
+    }, [categoryId, sortType])
 
     return (
         <>
@@ -39,8 +43,14 @@ const Home = () => {
             <div className={styles.content}>
                 <div className="container">
                     <div className={styles.content__top}>
-                        <Categories />
-                        <Sort />
+                        <Categories
+                            value={categoryId}
+                            onClickCategory={(id) => setCategoryId(id)}
+                        />
+                        <Sort
+                            value={sortType}
+                            onClickSort={(type) => setSortType(type)}
+                        />
                     </div>
                     <h2 className={styles.content__title}>Все пиццы</h2>
                     <div className={styles.content__items}>
