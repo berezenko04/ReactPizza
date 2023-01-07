@@ -44,9 +44,13 @@ a {
     text-decoration: none
 }
 
-button {
+button,
+input {
     outline: none;
     border: none;
-    cursor: pointer;
     background-color: transparent;
+}
+
+button {
+    cursor: pointer;
 }

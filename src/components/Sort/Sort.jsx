@@ -34,22 +34,21 @@ const Sort = ({ value, onClickSort }) => {
                 <b>Сортировка по:</b>
                 <span onClick={() => setIsOpened(!isOpened)}>{value.name}</span>
             </div >
-            {
-                isOpened &&
-                <div className={styles.sort__popup}>
-                    <ul>
-                        {categories.map((obj, index) => (
-                            <li
-                                key={index}
-                                className={value.name === categories[index].name ? styles.active : null}
-                                onClick={() => handleCategoryClick(obj)}
-                            >
-                                {obj.name}
-                            </li>
-                        ))}
-                    </ul >
-                </div >
-            }
+            
+            <div className={`${styles.sort__popup} ${isOpened && styles.sort__popup__active}`}>
+                <ul>
+                    {categories.map((obj, index) => (
+                        <li
+                            key={index}
+                            className={value.name === categories[index].name ? styles.active : null}
+                            onClick={() => handleCategoryClick(obj)}
+                        >
+                            {obj.name}
+                        </li>
+                    ))}
+                </ul >
+            </div >
+
         </div >
     )
 }

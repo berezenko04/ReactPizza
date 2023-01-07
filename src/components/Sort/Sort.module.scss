@@ -19,6 +19,7 @@
     }
 
     &__popup {
+        visibility: hidden;
         position: absolute;
         right: 0;
         margin-top: 15px;
@@ -28,7 +29,11 @@
         overflow: hidden;
         padding: 10px 0;
         width: 160px;
-        transition: all .15s ease-in-out;
+        transition: all .15s ease-in;
+
+        &__active {
+            visibility: visible;
+        }
 
         ul {
             overflow: hidden

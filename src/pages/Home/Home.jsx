@@ -8,6 +8,7 @@ import Sort from '../../components/Sort/Sort'
 import PizzaCard from '../../components/PizzaCard/PizzaCard'
 import PizzaService from '../../API/PizzaService/PizzaService'
 import SkeletonCard from '../../components/SkeletonCard/SkeletonCard'
+import Search from '../../components/Search/Search'
 
 const Home = () => {
 
@@ -17,6 +18,7 @@ const Home = () => {
         name: 'популярности ↑', sortProperty: 'rating', orderProperty: 'desc'
     });
     const [categoryId, setCategoryId] = useState(0);
+    const [searchValue, setSearchValue] = useState('');
 
 
     useEffect(() => {
@@ -52,12 +54,18 @@ const Home = () => {
                             onClickSort={(type) => setSortType(type)}
                         />
                     </div>
-                    <h2 className={styles.content__title}>Все пиццы</h2>
+                    <div className={styles.content__title}>
+                        <h2>{searchValue ? `Поиск по запросу: ${searchValue}` : 'Все пиццы'}</h2>
+                        <Search
+                            searchValue={searchValue}
+                            onChangeSearch={(value) => setSearchValue(value)}
+                        />
+                    </div>
                     <div className={styles.content__items}>
                         {isLoading ? [...new Array(8)].map((_, index) => (
                             <SkeletonCard key={index} />
                         )) :
-                            items.map((pizza) => (
+                            items.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase())).map((pizza) => (
                                 < PizzaCard
                                     key={pizza.id}
                                     {...pizza}
