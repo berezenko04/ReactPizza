@@ -2,14 +2,13 @@ import { Link } from 'react-router-dom'
 
 import styles from './NotFound.module.scss'
 
-import Header from '../../components/Header/Header'
+import Layout from '../../components/Layout/Layout'
 import Pepe from '../../assets/img/pepe.webp'
 
 
 const NotFound = () => {
     return (
-        <>
-            <Header />
+        <Layout>
             <div className={styles.notFound}>
                 <div className="container">
                     <div className={styles.notFound__wrapper}>
@@ -24,7 +23,7 @@ const NotFound = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </Layout>
 
     )
 }

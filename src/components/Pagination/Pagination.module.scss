@@ -1,0 +1,47 @@
+.paginate {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+
+    :global {
+        .selected {
+            a {
+                color: #FFFFFF;
+                background-color: #fe5f1e;
+            }
+        }
+
+        .disabled {
+            a:hover {
+                background-color: transparent;
+                color: #fe5f1e;
+            }
+        }
+    }
+
+    li {
+        display: inline-block;
+
+
+        a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            color: #fe5f1e;
+            font-weight: 700;
+            border: 1px solid #fe5f1e;
+            border-radius: 30px;
+            transition: all .3s ease-in-out;
+            cursor: pointer;
+            user-select: none;
+            text-align: center;
+            line-height: 38px;
+
+
+            &:hover {
+                color: #FFFFFF;
+                background-color: #fe5f1e;
+            }
+        }
+    }
+}

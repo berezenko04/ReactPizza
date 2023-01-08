@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 import styles from './Cart.module.scss'
 
-import Header from '../../components/Header/Header'
+import Layout from '../../components/Layout/Layout'
 import { ReactComponent as CartIcon } from '../../assets/icons/cart.svg'
 import { ReactComponent as TrashIcon } from '../../assets/icons/trash.svg'
 import { ReactComponent as BackIcon } from '../../assets/icons/arrow-left.svg'
@@ -16,8 +16,7 @@ const Cart = () => {
     const empty = true;
 
     return (
-        <>
-            <Header />
+        <Layout>
             <div className={styles.container__cart}>
                 <div className="container">
                     <div className={styles.content}>
@@ -78,7 +77,7 @@ const Cart = () => {
                     </div>
                 </div >
             </div>
-        </>
+        </Layout>
     )
 }
 

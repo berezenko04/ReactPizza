@@ -1,10 +1,13 @@
 import PropTypes from 'prop-types'
+import { useContext } from 'react';
 
 import styles from './Categories.module.scss'
 
-const Categories = ({ value, onClickCategory }) => {
+import AppContext from '../../Context';
 
+const Categories = () => {
 
+    const { categoryId, setCategoryId } = useContext(AppContext)
 
     const categories = [
         'Все',
@@ -20,8 +23,8 @@ const Categories = ({ value, onClickCategory }) => {
             {categories.map((category, index) => (
                 <li
                     key={index}
-                    onClick={() => onClickCategory(index)}
-                    className={value === index ? styles.active : null}
+                    onClick={() => setCategoryId(index)}
+                    className={categoryId === index ? styles.active : null}
                 >
                     {category}
                 </li>
@@ -30,9 +33,9 @@ const Categories = ({ value, onClickCategory }) => {
     )
 }
 
-Categories.propTypes = {
-    value: PropTypes.number,
-    onClickCategory: PropTypes.func
-}
+// Categories.propTypes = {
+//     value: PropTypes.number,
+//     onClickCategory: PropTypes.func
+// }
 
 export default Categories

@@ -36,22 +36,22 @@
         }
 
         ul {
-            overflow: hidden
+            overflow: hidden;
         }
 
         ul li {
             padding: 12px 20px;
-            cursor: pointer
+            cursor: pointer;
         }
 
         ul li.active,
         ul li:hover {
-            background: rgba(254, 95, 30, 0.05)
+            background: rgba(254, 95, 30, 0.05);
         }
 
         ul li.active {
             font-weight: bold;
-            color: #fe5f1e
+            color: #fe5f1e;
         }
     }
 }
