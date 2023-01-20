@@ -5,8 +5,11 @@ import styles from './Header.module.scss'
 
 import { ReactComponent as PizzaLogo } from '../../assets/icons/pizza-logo.svg'
 import { ReactComponent as CartIcon } from '../../assets/icons/cart.svg'
+import { useSelector } from 'react-redux'
 
 const Header = ({ isCart }) => {
+
+    const { cartItems, totalPrice } = useSelector((state) => state.cart);
     return (
         <header className={styles.header}>
             <div className="container">
@@ -20,11 +23,11 @@ const Header = ({ isCart }) => {
                     </Link>
                     {isCart &&
                         <Link to='/ReactPizza/cart' className={styles.header__cart}>
-                            <span>0 ₴</span>
+                            <span>{totalPrice} ₴</span>
                             <div className={styles.header__cart__delimiter}></div>
                             <div className={styles.header__cart__items}>
                                 <CartIcon className={styles.cartIcon} />
-                                <span>0</span>
+                                <span>{cartItems.length}</span>
                             </div>
                         </Link>
                     }

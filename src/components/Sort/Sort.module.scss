@@ -42,6 +42,7 @@
         ul li {
             padding: 12px 20px;
             cursor: pointer;
+            user-select: none;
         }
 
         ul li.active,

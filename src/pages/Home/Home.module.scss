@@ -2,6 +2,14 @@
     padding-top: 40px;
     padding-bottom: 60px;
 
+    &FullHeight {
+        height: calc(100vh - 220px);
+    }
+
+    @media screen and (max-width: 615px) {
+        height: calc(100vh - 170px);
+    }
+
     &__top {
         display: flex;
         justify-content: space-between;
@@ -19,7 +27,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 10px;
+        gap: 24px;
 
 
         h2 {

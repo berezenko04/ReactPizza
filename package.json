@@ -12,13 +12,17 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.1",
     "axios": "^1.2.2",
     "gh-pages": "^4.0.0",
+    "lodash.debounce": "^4.0.8",
     "prop-types": "^15.8.1",
+    "qs": "^6.11.0",
     "react": "^18.2.0",
     "react-content-loader": "^6.2.0",
     "react-dom": "^18.2.0",
     "react-paginate": "^8.1.4",
+    "react-redux": "^8.0.5",
     "react-router-dom": "^6.6.1",
     "vite-plugin-svgr": "^2.4.0"
   },

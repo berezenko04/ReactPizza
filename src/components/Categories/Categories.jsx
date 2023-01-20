@@ -1,13 +1,15 @@
-import PropTypes from 'prop-types'
-import { useContext } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
 
 import styles from './Categories.module.scss'
 
-import AppContext from '../../Context';
+import { setCategoryId } from '../../redux/slices/filterSlice';
+
+
 
 const Categories = () => {
+    const categoryId = useSelector((state) => state.filter.categoryId);
+    const dispatch = useDispatch();
 
-    const { categoryId, setCategoryId } = useContext(AppContext)
 
     const categories = [
         'Все',
@@ -23,7 +25,7 @@ const Categories = () => {
             {categories.map((category, index) => (
                 <li
                     key={index}
-                    onClick={() => setCategoryId(index)}
+                    onClick={() => dispatch(setCategoryId(index))}
                     className={categoryId === index ? styles.active : null}
                 >
                     {category}
@@ -32,10 +34,5 @@ const Categories = () => {
         </ul>
     )
 }
-
-// Categories.propTypes = {
-//     value: PropTypes.number,
-//     onClickCategory: PropTypes.func
-// }
 
 export default Categories

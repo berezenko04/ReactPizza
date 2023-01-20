@@ -1,17 +1,36 @@
 import PropTypes from 'prop-types'
+import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react'
 
 import styles from './PizzaCard.module.scss'
 
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 
+import { addItem } from '../../redux/slices/cartSlice'
 
-const PizzaCard = ({ imageUrl, title, price, sizes, types }) => {
+
+const PizzaCard = ({ id, imageUrl, title, price, sizes, types }) => {
 
     const [activeType, setActiveType] = useState(0);
     const [activeSize, setActiveSize] = useState(0);
-
     const typeNames = ['тонкое', 'традиционное'];
+    const cartItem = useSelector((state) => state.cart.cartItems.find((obj) => obj.id === id));
+    const addedCount = cartItem ? cartItem.count : 0;
+
+    const dispatch = useDispatch();
+
+    const onClickAdd = () => {
+        const item = {
+            id,
+            title,
+            price,
+            imageUrl,
+            type: typeNames[activeType],
+            size: activeSize
+        }
+        dispatch(addItem(item));
+    }
+
     return (
         <div className={styles.pizzaBlock}>
             <img
@@ -35,10 +54,13 @@ const PizzaCard = ({ imageUrl, title, price, sizes, types }) => {
                 </div>
                 <div className={styles.pizzaBlock__content__bottom}>
                     <div className={styles.pizzaBlock__content__bottom__price}>от {price} ₴</div>
-                    <button className={styles.pizzaBlock__content__bottom__add}>
+                    <button
+                        className={styles.pizzaBlock__content__bottom__add}
+                        onClick={onClickAdd}
+                    >
                         <PlusIcon className={styles.plusIcon} />
                         <span>Добавить</span>
-                        {/* <i>2</i> */}
+                        {addedCount > 0 && <i>{addedCount}</i>}
                     </button>
                 </div>
             </div>

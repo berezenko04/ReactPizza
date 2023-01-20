@@ -19,7 +19,7 @@ const Cart = () => {
         <Layout>
             <div className={styles.container__cart}>
                 <div className="container">
-                    <div className={styles.content}>
+                    <div className={`${styles.content} ${empty ? styles.contentFullHeight : ''}`}>
                         <div className={styles.content__cart}>
                             {empty ?
                                 (

@@ -81,13 +81,17 @@
                     svg path {
                         fill: #fff;
                     }
+
+                    i {
+                        background-color: #fff;
+                        color: #fe5f1e;
+                    }
                 }
 
                 span {
                     color: #EB5A1E;
                     font-weight: 700;
                     font-size: 16px;
-                    line-height: 19px;
                 }
 
                 .plusIcon {
@@ -100,11 +104,13 @@
                     background-color: #fe5f1e;
                     color: #fff;
                     font-weight: 600;
-                    width: 22px;
-                    height: 22px;
+                    width: 24px;
+                    height: 24px;
                     font-style: normal;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                     font-size: 13px;
-                    line-height: 22px;
                 }
             }
         }
