@@ -16,7 +16,7 @@ const App = () => {
       <Routes>
         <Route exact path='/ReactPizza' element={<Home />} />
         <Route exact path='/ReactPizza/cart' element={<Cart />} />
-        <Route path='*' element={<NotFound />} />
+        <Route path='*' element={<NotFound />} /> {/* Don't work with gh-pages */}
       </Routes>
     </div>
   )

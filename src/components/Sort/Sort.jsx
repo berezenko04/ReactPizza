@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import styles from './Sort.module.scss'
 
 import { ReactComponent as SortIcon } from '../../assets/icons/arrow-top.svg'
-import { setSortType } from '../../redux/slices/filterSlice'
+import { setCurrentPage, setSortType } from '../../redux/slices/filterSlice'
 
 
 
@@ -27,6 +27,7 @@ const Sort = () => {
     const handleCategoryClick = (i) => {
         dispatch(setSortType(i));
         setIsOpened(false);
+        dispatch(setCurrentPage(1));
     }
 
     useEffect(() => {

@@ -2,7 +2,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
     border-top: 1px solid #f6f6f6;
     padding-top: 30px;
 
@@ -51,6 +50,19 @@
             align-items: center;
             border: 2px solid #FE5F1E;
             border-radius: 50%;
+            transition: all .15s ease-in;
+
+
+            &:hover {
+                border: 2px solid #FE5F1E;
+                background-color: #FE5F1E;
+
+                svg {
+                    path {
+                        fill: #FFFFFF;
+                    }
+                }
+            }
         }
 
         span {
@@ -76,6 +88,18 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        transition: all .15s ease-in;
+
+        &:hover {
+            border: 2px solid #000000;
+            background-color: #000000;
+
+            .remove {
+                path {
+                    fill: #FFFFFF;
+                }
+            }
+        }
 
 
         .remove {

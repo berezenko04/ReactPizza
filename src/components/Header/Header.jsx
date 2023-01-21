@@ -10,10 +10,13 @@ import { useSelector } from 'react-redux'
 const Header = ({ isCart }) => {
 
     const { cartItems, totalPrice } = useSelector((state) => state.cart);
+
+    const totalCount = cartItems.reduce((acc, item) => acc + item.count, 0);
+
     return (
         <header className={styles.header}>
             <div className="container">
-                <div className={styles.wrapper}>
+                <div className={styles.header__wrapper}>
                     <Link to='/ReactPizza' className={styles.header__logo}>
                         <PizzaLogo className={styles.pizzaLogo} />
                         <div>
@@ -27,7 +30,7 @@ const Header = ({ isCart }) => {
                             <div className={styles.header__cart__delimiter}></div>
                             <div className={styles.header__cart__items}>
                                 <CartIcon className={styles.cartIcon} />
-                                <span>{cartItems.length}</span>
+                                <span>{totalCount}</span>
                             </div>
                         </Link>
                     }

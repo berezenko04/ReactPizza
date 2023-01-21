@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 
 import styles from './Cart.module.scss'
 
@@ -9,19 +10,29 @@ import { ReactComponent as BackIcon } from '../../assets/icons/arrow-left.svg'
 import { ReactComponent as SadIcon } from '../../assets/icons/sad.svg'
 import EmptyCart from '../../assets/img/empty-cart.webp'
 import CartItem from '../../components/CartItem/CartItem'
+import { clearItems } from '../../redux/slices/cartSlice'
+
 
 
 
 const Cart = () => {
-    const empty = true;
+    const dispatch = useDispatch();
+    
+    const { cartItems, totalPrice } = useSelector((state) => state.cart);
+
+    const onClickClear = () => {
+        if (window.confirm('Вы действительно хотите очистить корзину?')) {
+            dispatch(clearItems());
+        }
+    }
 
     return (
         <Layout>
             <div className={styles.container__cart}>
                 <div className="container">
-                    <div className={`${styles.content} ${empty ? styles.contentFullHeight : ''}`}>
+                    <div className={`${styles.content} ${cartItems.length === 0 ? styles.contentFullHeight : ''}`}>
                         <div className={styles.content__cart}>
-                            {empty ?
+                            {cartItems.length === 0 ?
                                 (
                                     <div className={styles.cartEmpty}>
                                         <div className={styles.cartEmpty__content}>
@@ -35,7 +46,7 @@ const Cart = () => {
                                             </div>
                                             <img src={EmptyCart} alt="Empty cart" />
                                         </div>
-                                        <Link to='/ReactPizza' className={styles.cartEmpty__button}>Вернутьcя назад</Link>
+                                        <Link to='/ReactPizza/' className={styles.cartEmpty__button}>Вернутьcя назад</Link>
                                     </div>
                                 )
                                 : (
@@ -45,23 +56,29 @@ const Cart = () => {
                                                 <CartIcon className={styles.cartIcon} />
                                                 <h2>Корзина</h2>
                                             </div>
-                                            <button className={styles.content__cart__top__clear}>
+                                            <button
+                                                className={styles.content__cart__top__clear}
+                                                onClick={onClickClear}
+                                            >
                                                 <TrashIcon className={styles.trashIcon} />
                                                 <span>Очистить корзину</span>
                                             </button>
                                         </div>
                                         <div className={styles.content__items}>
-                                            <CartItem />
-                                            <CartItem />
-                                            <CartItem />
+                                            {cartItems.map((item) => (
+                                                <CartItem
+                                                    key={item.id}
+                                                    {...item}
+                                                />
+                                            ))}
                                         </div>
                                         <div className={styles.content__cart__bottom}>
                                             <div className={styles.content__cart__bottom__details}>
-                                                <span> Всего пицц: <b>3 шт.</b> </span>
-                                                <span> Сумма заказа: <b className={styles.summary}>900 ₴</b> </span>
+                                                <span> Всего пицц: <b>{cartItems.reduce((acc, item) => acc + item.count, 0)} шт.</b> </span>
+                                                <span> Сумма заказа: <b className={styles.summary}>{totalPrice} ₴</b> </span>
                                             </div>
                                             <div className={styles.content__cart__bottom__buttons}>
-                                                <Link to='/ReactPizza' className={styles.content__cart__bottom__buttons__back}>
+                                                <Link to='/ReactPizza/' className={styles.content__cart__bottom__buttons__back}>
                                                     <BackIcon />
                                                     <span>Вернуться назад</span>
                                                 </Link>
@@ -77,7 +94,7 @@ const Cart = () => {
                     </div>
                 </div >
             </div>
-        </Layout>
+        </Layout >
     )
 }
 

@@ -42,7 +42,7 @@ const Search = () => {
                 ref={inputRef}
                 type="text"
                 placeholder='Поиск пиццы...'
-                onChange={onChangeInput}
+                onChange={value.length > 16 ? '' : onChangeInput}
                 value={value}
             />
             {value &&

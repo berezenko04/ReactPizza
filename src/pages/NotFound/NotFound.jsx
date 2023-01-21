@@ -19,7 +19,7 @@ const NotFound = () => {
                             </div>
                             <img src={Pepe} alt="404" />
                         </div>
-                        <Link to='/ReactPizza' className={styles.notFound__button}>Вернутьcя назад</Link>
+                        <Link to='/ReactPizza/' className={styles.notFound__button}>Вернутьcя назад</Link>
                     </div>
                 </div>
             </div>
