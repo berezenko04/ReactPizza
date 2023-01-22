@@ -1,31 +1,22 @@
 .notFound {
-    padding-top: 130px;
     min-height: calc(100vh - 220px);
     height: 100%;
-
-    @media screen and (max-height:920px) {
-        padding-top: 100px;
-    }
-
-    @media screen and (max-height:830px) {
-        padding-top: 80px;
-    }
-
-    @media screen and (max-height:730px) {
-        padding-top: 60px;
-    }
-
-    @media screen and (max-height:680px) {
-        padding-top: 30px;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     @media screen and (max-width:615px) {
-        min-height: calc(100vh - 170px);
+        height: calc(100vh - 170px);
+    }
+
+    @media screen and (max-width:500px) {
+        height: calc(100vh - 110px);
     }
 
     @media screen and (max-width:420px) {
-        min-height: calc(100vh - 200px);
+        height: calc(100vh - 98px);
     }
+
 
     &__wrapper {
         display: flex;

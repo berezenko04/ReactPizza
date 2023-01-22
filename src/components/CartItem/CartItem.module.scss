@@ -1,9 +1,11 @@
 .cartItem {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
     align-items: center;
+    grid-template-columns: 1fr 170px 120px 40px;
     border-top: 1px solid #f6f6f6;
     padding-top: 30px;
+    gap: 30px;
+    width: 100%;
 
     &__left {
         display: flex;

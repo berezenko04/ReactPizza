@@ -17,7 +17,7 @@ import { clearItems } from '../../redux/slices/cartSlice'
 
 const Cart = () => {
     const dispatch = useDispatch();
-    
+
     const { cartItems, totalPrice } = useSelector((state) => state.cart);
 
     const onClickClear = () => {

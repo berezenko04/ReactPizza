@@ -6,7 +6,7 @@ import { ReactComponent as MinusIcon } from '../../assets/icons/minus.svg'
 import { addItem, minusItem, removeItem } from '../../redux/slices/cartSlice'
 
 
-const CartItem = ({ id, title, price, count, imageUrl, type }) => {
+const CartItem = ({ id, title, price, count, imageUrl, type, size }) => {
 
     const dispatch = useDispatch();
 
@@ -21,7 +21,7 @@ const CartItem = ({ id, title, price, count, imageUrl, type }) => {
     }
 
     const onClickRemove = () => {
-        if (window.confirm('Ты уверен что хочешь удалить этот товар?')) {
+        if (window.confirm('Ты дейсвительно хочешь удалить этот товар?')) {
             dispatch(removeItem(id));
         }
     }
@@ -36,7 +36,7 @@ const CartItem = ({ id, title, price, count, imageUrl, type }) => {
                 />
                 <div className={styles.cartItem__left__title}>
                     <h3>{title}</h3>
-                    <p>{type}, 26 см.</p>
+                    <p>{type}, {size} см.</p>
                 </div>
             </div>
             <div className={styles.cartItem__count}>

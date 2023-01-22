@@ -4,7 +4,7 @@
 }
 
 .content {
-    padding-bottom: 20px;
+    padding-bottom: 50px;
     padding-top: 30px;
 
 
@@ -16,6 +16,14 @@
 
         @media screen and (max-width: 615px) {
             height: calc(100vh - 170px);
+        }
+
+        @media screen and (max-width:500px) {
+            height: calc(100vh - 110px);
+        }
+
+        @media screen and (max-width:420px) {
+            height: calc(100vh - 98px);
         }
     }
 

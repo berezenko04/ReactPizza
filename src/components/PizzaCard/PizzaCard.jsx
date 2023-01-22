@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react'
 
@@ -26,7 +25,7 @@ const PizzaCard = ({ id, imageUrl, title, price, sizes, types }) => {
             price,
             imageUrl,
             type: typeNames[activeType],
-            size: activeSize
+            size: sizes[activeSize]
         }
         dispatch(addItem(item));
     }
@@ -66,13 +65,6 @@ const PizzaCard = ({ id, imageUrl, title, price, sizes, types }) => {
             </div>
         </div >
     )
-}
-
-PizzaCard.propTypes = {
-    imgUrl: PropTypes.string,
-    title: PropTypes.string,
-    price: PropTypes.number,
-    sizes: PropTypes.array
 }
 
 export default PizzaCard

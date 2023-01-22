@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import qs from 'qs'
 import { useNavigate } from 'react-router-dom'
@@ -12,20 +12,17 @@ import PizzaCard from '../../components/PizzaCard/PizzaCard'
 import SkeletonCard from '../../components/SkeletonCard/SkeletonCard'
 import Search from '../../components/Search/Search'
 import Pagination from '../../components/Pagination/Pagination'
-import PizzaService from '../../API/PizzaService/PizzaService'
 
-import { setItems } from '../../redux/slices/pizzaSlice'
+
+import { fetchPizza } from '../../redux/slices/pizzaSlice'
 
 
 const Home = () => {
 
     const { categoryId, sortType, currentPage } = useSelector((state) => state.filter);
     const searchValue = useSelector((state) => state.search.searchValue);
-    const items = useSelector((state) => state.pizza.items);
+    const { items, status } = useSelector((state) => state.pizza);
     const dispatch = useDispatch();
-
-    const [isLoading, setIsLoading] = useState(true);
-
     const navigate = useNavigate();
 
 
@@ -43,17 +40,12 @@ const Home = () => {
     // }, [])
 
     useEffect(() => {
-        (async () => {
-            try {
-                setIsLoading(true);
-                const pizzas = await PizzaService.getPizza(categoryId, sortType, searchValue, currentPage);
-                dispatch(setItems(pizzas));
-                setIsLoading(false);
-            } catch (error) {
-                alert('Ошибка при запросе данных :(');
-                console.error(error);
-            }
-        })();
+        dispatch(fetchPizza({
+            categoryId,
+            sortType,
+            searchValue,
+            currentPage
+        }))
 
         window.scrollTo(0, 0);
     }, [categoryId, sortType, searchValue, currentPage])
@@ -80,19 +72,27 @@ const Home = () => {
                         <h2>{searchValue ? `Поиск по запросу: ${searchValue}` : 'Все пиццы'}</h2>
                         <Search />
                     </div>
-                    <div className={styles.content__items}>
-                        {isLoading ? [...new Array(4)].map((_, index) => (
-                            <SkeletonCard key={index} />
-                        )) :
-                            items.map((pizza) => (
-                                < PizzaCard
-                                    key={pizza.id}
-                                    {...pizza}
-                                />
-                            ))
-                        }
-                    </div>
-                    {searchValue !== '' || (items.length < 4 && currentPage != 3) ? '' : <Pagination />}
+
+                    {status === 'error' ? (
+                        <h2>Произошла ошибка при загрузке товаров, попробуйте позже 😥</h2>
+                    ) : (
+                        <>
+                            <div className={styles.content__items}>
+                                {status === 'loading' ? [...new Array(4)].map((_, index) => (
+                                    <SkeletonCard key={index} />
+                                )) :
+                                    items.map((pizza) => (
+                                        < PizzaCard
+                                            key={pizza.id}
+                                            {...pizza}
+                                        />
+                                    ))
+                                }
+                            </div>
+                            {searchValue !== '' || (items.length < 4 && currentPage != 3) ? '' : <Pagination />}
+                        </>
+                    )
+                    }
                 </div>
             </div>
         </Layout>
