@@ -5,6 +5,8 @@ import './App.scss'
 import Home from './pages/Home/Home'
 import Cart from './pages/Cart/Cart'
 import NotFound from './pages/NotFound/NotFound'
+import PizzaItem from './pages/PizzaItem/PizzaItem'
+import Layout from './components/Layout/Layout'
 
 
 const App = () => {
@@ -14,9 +16,12 @@ const App = () => {
   return (
     <div className="wrapper">
       <Routes>
-        <Route exact path='/ReactPizza' element={<Home />} />
-        <Route exact path='/ReactPizza/cart' element={<Cart />} />
-        <Route path='*' element={<NotFound />} /> {/* Don't work with gh-pages */}
+        <Route path='/ReactPizza/' element={<Layout />}>
+          <Route path='' element={<Home />} />
+          <Route path='cart' element={<Cart />} />
+          <Route path='pizza/:id' element={<PizzaItem />}></Route>
+          <Route path='*' element={<NotFound />} /> {/* Don't work with gh-pages */}
+        </Route>
       </Routes>
     </div>
   )

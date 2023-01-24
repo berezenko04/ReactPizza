@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types'
+import { Outlet } from 'react-router-dom'
 
 import Header from '../Header/Header'
 
-const Layout = ({ children, isCart = false }) => {
+const Layout = () => {
     return (
         <>
-            <Header isCart={isCart} />
-            <main>{children}</main>
+            <Header />
+            <main><Outlet /></main>
         </>
     )
 }

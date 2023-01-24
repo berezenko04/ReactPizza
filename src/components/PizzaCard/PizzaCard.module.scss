@@ -1,6 +1,11 @@
 .pizzaBlock {
     text-align: center;
     width: 280px;
+    transition: transform .2s ease-in;
+
+    &:hover {
+        transform: scale(1.04);
+    }
 
     &__image {
         object-fit: cover;

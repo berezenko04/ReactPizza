@@ -9,7 +9,7 @@ export const fetchPizza = createAsyncThunk(
     'pizza/fetchPizzaStatus',
     async (params) => {
         const { categoryId, sortType, searchValue, currentPage } = params;
-        const pizzas = await PizzaService.getPizza(categoryId, sortType, searchValue, currentPage);
+        const pizzas = await PizzaService.getPizza(categoryId, sortType, searchValue, currentPage); 
         return pizzas;
     }
 )

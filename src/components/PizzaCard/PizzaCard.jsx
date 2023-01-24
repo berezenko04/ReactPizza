@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import styles from './PizzaCard.module.scss'
 
@@ -32,11 +33,13 @@ const PizzaCard = ({ id, imageUrl, title, price, sizes, types }) => {
 
     return (
         <div className={styles.pizzaBlock}>
-            <img
-                className={styles.pizzaBlock__image}
-                src={imageUrl}
-                alt="Pizza"
-            />
+            <Link to={`/ReactPizza/pizza/${id}`}>
+                <img
+                    className={styles.pizzaBlock__image}
+                    src={imageUrl}
+                    alt="Pizza"
+                />
+            </Link>
             <div className={styles.pizzaBlock__content}>
                 <h4 className={styles.pizzaBlock__content__title}>{title}</h4>
                 <div className={styles.pizzaBlock__content__selector}>

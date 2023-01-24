@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 import styles from './Header.module.scss'
@@ -6,12 +6,14 @@ import styles from './Header.module.scss'
 import { ReactComponent as PizzaLogo } from '../../assets/icons/pizza-logo.svg'
 import { ReactComponent as CartIcon } from '../../assets/icons/cart.svg'
 import { useSelector } from 'react-redux'
+import { cartSelector } from '../../redux/slices/cartSlice'
 
-const Header = ({ isCart }) => {
+const Header = () => {
 
-    const { cartItems, totalPrice } = useSelector((state) => state.cart);
+    const { cartItems, totalPrice } = useSelector(cartSelector);
 
     const totalCount = cartItems.reduce((acc, item) => acc + item.count, 0);
+    const location = useLocation();
 
     return (
         <header className={styles.header}>
@@ -24,16 +26,14 @@ const Header = ({ isCart }) => {
                             <p>Самая реактивная пицца</p>
                         </div>
                     </Link>
-                    {isCart &&
-                        <Link to='/ReactPizza/cart' className={styles.header__cart}>
-                            <span>{totalPrice} ₴</span>
-                            <div className={styles.header__cart__delimiter}></div>
-                            <div className={styles.header__cart__items}>
-                                <CartIcon className={styles.cartIcon} />
-                                <span>{totalCount}</span>
-                            </div>
-                        </Link>
-                    }
+                    {location.pathname !== '/ReactPizza/cart' && <Link to='/ReactPizza/cart' className={styles.header__cart}>
+                        <span>{totalPrice} ₴</span>
+                        <div className={styles.header__cart__delimiter}></div>
+                        <div className={styles.header__cart__items}>
+                            <CartIcon className={styles.cartIcon} />
+                            <span>{totalCount}</span>
+                        </div>
+                    </Link>}
                 </div>
             </div>
         </header>

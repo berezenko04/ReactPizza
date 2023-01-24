@@ -33,12 +33,14 @@ const cartSlice = createSlice({
         minusItem(state, action) {
             const findItem = state.cartItems.find((obj) => obj.id === action.payload);
 
-            if (findItem) {
+            if (findItem && findItem.count > 0) {
                 findItem.count--;
             }
         }
     }
 })
+
+export const cartSelector = (state) => state.cart;
 
 export const { addItem, removeItem, clearItems, minusItem } = cartSlice.actions;
 

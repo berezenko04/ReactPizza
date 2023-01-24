@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useCallback, useRef, useState } from 'react'
 import debounce from 'lodash.debounce'
 
@@ -7,8 +7,6 @@ import styles from './Search.module.scss'
 import { ReactComponent as SearchIcon } from '../../assets/icons/search.svg'
 import { ReactComponent as CancelIcon } from '../../assets/icons/close.svg'
 import { setSearchValue } from '../../redux/slices/searchSlice'
-
-
 
 
 const Search = () => {
@@ -34,7 +32,6 @@ const Search = () => {
         inputRef.current.focus();
     }
 
-
     return (
         <div className={styles.inputBlock}>
             <SearchIcon className={styles.searchIcon} />
@@ -42,7 +39,7 @@ const Search = () => {
                 ref={inputRef}
                 type="text"
                 placeholder='Поиск пиццы...'
-                onChange={value.length > 16 ? '' : onChangeInput}
+                onChange={onChangeInput}
                 value={value}
             />
             {value &&
@@ -51,8 +48,5 @@ const Search = () => {
         </div>
     )
 }
-
-
-
 
 export default Search
