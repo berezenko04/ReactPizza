@@ -2,10 +2,16 @@ import { useState, useEffect } from 'react';
 import axios from 'axios'
 import { useParams, useNavigate } from 'react-router-dom'
 
-const PizzaItem = () => {
+import styles from './PizzaItem.module.scss'
+
+const PizzaItem: React.FC = () => {
 
     const { id } = useParams();
-    const [pizza, setPizza] = useState({});
+    const [pizza, setPizza] = useState<{
+        imageUrl: string,
+        title: string,
+        price: number
+    }>();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -16,7 +22,7 @@ const PizzaItem = () => {
             } catch (error) {
                 alert('Произошла ошибка при загрузке пиццы, попробуйте позже.');
                 console.error(error);
-                navigate('/');
+                navigate('/ReactPizza/');
             }
         }
         fetchPizza();

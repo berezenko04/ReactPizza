@@ -14,7 +14,7 @@ import { cartSelector, clearItems } from '../../redux/slices/cartSlice'
 
 
 
-const Cart = () => {
+const Cart: React.FC = () => {
     const dispatch = useDispatch();
 
     const { cartItems, totalPrice } = useSelector(cartSelector);

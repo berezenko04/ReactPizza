@@ -1,5 +1,4 @@
 import { Link, useLocation } from 'react-router-dom'
-import PropTypes from 'prop-types'
 
 import styles from './Header.module.scss'
 
@@ -8,11 +7,11 @@ import { ReactComponent as CartIcon } from '../../assets/icons/cart.svg'
 import { useSelector } from 'react-redux'
 import { cartSelector } from '../../redux/slices/cartSlice'
 
-const Header = () => {
+const Header: React.FC = () => {
 
     const { cartItems, totalPrice } = useSelector(cartSelector);
 
-    const totalCount = cartItems.reduce((acc, item) => acc + item.count, 0);
+    const totalCount = cartItems.reduce((acc: number, item) => acc + item.count, 0);
     const location = useLocation();
 
     return (
@@ -41,8 +40,3 @@ const Header = () => {
 }
 
 export default Header
-
-
-Header.propTypes = {
-    isCart: PropTypes.bool
-}

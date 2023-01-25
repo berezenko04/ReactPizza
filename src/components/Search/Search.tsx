@@ -9,11 +9,11 @@ import { ReactComponent as CancelIcon } from '../../assets/icons/close.svg'
 import { setSearchValue } from '../../redux/slices/searchSlice'
 
 
-const Search = () => {
+const Search: React.FC = () => {
 
     const [value, setValue] = useState('');
     const dispatch = useDispatch();
-    const inputRef = useRef();
+    const inputRef = useRef<HTMLInputElement>(null);
 
     const updateSearchValue = useCallback(
         debounce((value) => {
@@ -21,7 +21,7 @@ const Search = () => {
         }, 500), []
     )
 
-    const onChangeInput = (event) => {
+    const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value);
         updateSearchValue(event.target.value);
     }
@@ -29,7 +29,7 @@ const Search = () => {
     const onClickClear = () => {
         dispatch(setSearchValue(''));
         setValue('');
-        inputRef.current.focus();
+        inputRef.current?.focus();
     }
 
     return (

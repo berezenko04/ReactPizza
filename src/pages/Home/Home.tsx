@@ -10,13 +10,12 @@ import Sort from '../../components/Sort/Sort'
 import PizzaCard from '../../components/PizzaCard/PizzaCard'
 import SkeletonCard from '../../components/SkeletonCard/SkeletonCard'
 import Search from '../../components/Search/Search'
-import Pagination from '../../components/Pagination/Pagination'
 import { fetchPizza } from '../../redux/slices/pizzaSlice'
 
 
-const Home = () => {
+const Home: React.FC = () => {
 
-    const { categoryId, sortType, currentPage } = useSelector((state) => state.filter);
+    const { categoryId, sortType } = useSelector((state) => state.filter);
     const searchValue = useSelector((state) => state.search.searchValue);
     const { items, status } = useSelector((state) => state.pizza);
     const dispatch = useDispatch();
@@ -41,21 +40,19 @@ const Home = () => {
             categoryId,
             sortType,
             searchValue,
-            currentPage
         }))
 
         window.scrollTo(0, 0);
-    }, [categoryId, sortType, searchValue, currentPage])
+    }, [categoryId, sortType, searchValue])
 
     useEffect(() => {
         const queryString = qs.stringify({
             sortProperty: sortType.sortProperty,
             sortOrder: sortType.orderProperty,
-            categoryId,
-            currentPage,
+            categoryId
         })
         navigate(`?${queryString}`);
-    }, [categoryId, sortType, currentPage])
+    }, [categoryId, sortType])
 
     return (
         <div className={`${styles.content} ${items.length === 0 ? styles.contentFullHeight : 0}`}>
@@ -72,21 +69,18 @@ const Home = () => {
                 {status === 'error' ? (
                     <h2>Произошла ошибка при загрузке товаров, попробуйте позже 😥</h2>
                 ) : (
-                    <>
-                        <div className={styles.content__items}>
-                            {status === 'loading' ? [...new Array(4)].map((_, index) => (
-                                <SkeletonCard key={index} />
-                            )) :
-                                items.map((pizza) => (
-                                    < PizzaCard
-                                        key={pizza.id}
-                                        {...pizza}
-                                    />
-                                ))
-                            }
-                        </div>
-                        {searchValue !== '' || (items.length < 4 && currentPage != 3) ? '' : <Pagination />}
-                    </>
+                    <div className={styles.content__items}>
+                        {status === 'loading' ? [...new Array(4)].map((_, index) => (
+                            <SkeletonCard key={index} />
+                        )) :
+                            items.map((pizza) => (
+                                < PizzaCard
+                                    key={pizza.id}
+                                    {...pizza}
+                                />
+                            ))
+                        }
+                    </div>
                 )
                 }
             </div>

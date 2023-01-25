@@ -5,7 +5,7 @@ import styles from './NotFound.module.scss'
 import Pepe from '../../assets/img/pepe.webp'
 
 
-const NotFound = () => {
+const NotFound: React.FC = () => {
     return (
         <div className={styles.notFound}>
             <div className="container">

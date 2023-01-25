@@ -4,11 +4,16 @@ import { useSelector, useDispatch } from 'react-redux'
 import styles from './Sort.module.scss'
 
 import { ReactComponent as SortIcon } from '../../assets/icons/arrow-top.svg'
-import { setCurrentPage, setSortType } from '../../redux/slices/filterSlice'
+import { setSortType } from '../../redux/slices/filterSlice'
 
 
+type SortItem = {
+    name: string,
+    sortProperty: string,
+    orderProperty: string
+};
 
-export const sortList = [
+export const sortList: SortItem[] = [
     { name: 'популярности ↓', sortProperty: 'rating', orderProperty: 'desc' },
     { name: 'популярности ↑', sortProperty: 'rating', orderProperty: 'asc' },
     { name: 'цене ↓', sortProperty: 'price', orderProperty: 'desc' },
@@ -17,22 +22,22 @@ export const sortList = [
     { name: 'алфавиту ↑', sortProperty: 'title', orderProperty: 'asc' }
 ];
 
-const Sort = () => {
+
+const Sort: React.FC = () => {
 
     const sortType = useSelector((state) => state.filter.sortType);
     const dispatch = useDispatch();
-    const sortRef = useRef();
+    const sortRef = useRef<HTMLDivElement>(null);
     const [isOpened, setIsOpened] = useState(false);
 
-    const handleCategoryClick = (i) => {
-        dispatch(setSortType(i));
+    const handleCategoryClick = (obj: SortItem) => {
+        dispatch(setSortType(obj));
         setIsOpened(false);
-        dispatch(setCurrentPage(1));
     }
 
     useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (!event.path.includes(sortRef.current)) {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (sortRef.current && !event.composedPath().includes(sortRef.current)) {
                 setIsOpened(false);
             }
         }

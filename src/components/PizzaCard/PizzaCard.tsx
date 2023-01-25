@@ -8,8 +8,17 @@ import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 
 import { addItem } from '../../redux/slices/cartSlice'
 
+type PizzaCardProps = {
+    id: string,
+    imageUrl: string,
+    title: string,
+    price: number,
+    sizes: number[],
+    types: number[]
+}
 
-const PizzaCard = ({ id, imageUrl, title, price, sizes, types }) => {
+
+const PizzaCard: React.FC<PizzaCardProps> = ({ id, imageUrl, title, price, sizes, types }) => {
 
     const [activeType, setActiveType] = useState(0);
     const [activeSize, setActiveSize] = useState(0);

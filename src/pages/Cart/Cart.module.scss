@@ -107,10 +107,26 @@
                     border: 1px solid #D3D3D3;
                     border-radius: 30px;
                     padding: 18px 30px;
+                    transition: all .15s ease-in;
+
+                    &:hover {
+                        background-color: #D3D3D3;
+
+                        span {
+                            color: white;
+                        }
+
+                        svg {
+                            path {
+                                stroke: white;
+                            }
+                        }
+                    }
 
 
                     span {
                         color: #CACACA;
+                        font-weight: 700;
                     }
                 }
 
@@ -121,7 +137,14 @@
                     color: #FFFFFF;
                     border-radius: 30px;
                     padding: 18px 30px;
+                    border: 1px solid #FE5F1E;
                     background-color: #FE5F1E;
+                    transition: all .15s ease-in;
+
+                    &:hover {
+                        background-color: white;
+                        color: #FE5F1E;
+                    }
                 }
             }
         }
