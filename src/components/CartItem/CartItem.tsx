@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux'
 
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 import { ReactComponent as MinusIcon } from '../../assets/icons/minus.svg'
-import { addItem, minusItem, removeItem } from '../../redux/slices/cartSlice'
-
+import { addItem, CartItem, minusItem, removeItem } from '../../redux/slices/cartSlice'
+import { useAppDispatch } from '../../redux/store'
 
 
 type CartItemProps = {
@@ -17,14 +17,14 @@ type CartItemProps = {
     size: number
 }
 
-const CartItem: React.FC<CartItemProps> = ({ id, title, price, count, imageUrl, type, size }) => {
+const CartItemBlock: React.FC<CartItemProps> = ({ id, title, price, count, imageUrl, type, size }) => {
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const onClickPlus = () => {
         dispatch(addItem({
-            id
-        }))
+            id,
+        } as CartItem))
     }
 
     const onClickMinus = () => {
@@ -63,4 +63,4 @@ const CartItem: React.FC<CartItemProps> = ({ id, title, price, count, imageUrl, 
     )
 }
 
-export default CartItem
+export default CartItemBlock

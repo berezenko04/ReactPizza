@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import qs from 'qs'
 import { useNavigate } from 'react-router-dom'
 
@@ -11,14 +11,15 @@ import PizzaCard from '../../components/PizzaCard/PizzaCard'
 import SkeletonCard from '../../components/SkeletonCard/SkeletonCard'
 import Search from '../../components/Search/Search'
 import { fetchPizza } from '../../redux/slices/pizzaSlice'
+import { RootState, useAppDispatch } from '../../redux/store'
 
 
 const Home: React.FC = () => {
 
-    const { categoryId, sortType } = useSelector((state) => state.filter);
-    const searchValue = useSelector((state) => state.search.searchValue);
-    const { items, status } = useSelector((state) => state.pizza);
-    const dispatch = useDispatch();
+    const { categoryId, sortType } = useSelector((state: RootState) => state.filter);
+    const searchValue = useSelector((state: RootState) => state.search.searchValue);
+    const { items, status } = useSelector((state: RootState) => state.pizza);
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
 

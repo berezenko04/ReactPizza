@@ -11,7 +11,7 @@ const Header: React.FC = () => {
 
     const { cartItems, totalPrice } = useSelector(cartSelector);
 
-    const totalCount = cartItems.reduce((acc: number, item) => acc + item.count, 0);
+    const totalCount = cartItems.reduce((acc, item) => acc + item.count, 0);
     const location = useLocation();
 
     return (

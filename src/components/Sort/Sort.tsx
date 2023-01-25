@@ -5,12 +5,13 @@ import styles from './Sort.module.scss'
 
 import { ReactComponent as SortIcon } from '../../assets/icons/arrow-top.svg'
 import { setSortType } from '../../redux/slices/filterSlice'
+import { RootState } from '../../redux/store'
 
 
-type SortItem = {
+export type SortItem = {
     name: string,
-    sortProperty: string,
-    orderProperty: string
+    sortProperty: 'rating' | 'title' | 'price',
+    orderProperty: 'desc' | 'asc'
 };
 
 export const sortList: SortItem[] = [
@@ -25,7 +26,7 @@ export const sortList: SortItem[] = [
 
 const Sort: React.FC = () => {
 
-    const sortType = useSelector((state) => state.filter.sortType);
+    const sortType = useSelector((state: RootState) => state.filter.sortType);
     const dispatch = useDispatch();
     const sortRef = useRef<HTMLDivElement>(null);
     const [isOpened, setIsOpened] = useState(false);

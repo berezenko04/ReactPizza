@@ -6,15 +6,16 @@ import styles from './PizzaCard.module.scss'
 
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 
-import { addItem } from '../../redux/slices/cartSlice'
+import { addItem, CartItem } from '../../redux/slices/cartSlice'
+import { RootState } from '../../redux/store'
 
 type PizzaCardProps = {
     id: string,
-    imageUrl: string,
     title: string,
     price: number,
     sizes: number[],
-    types: number[]
+    types: number[],
+    imageUrl: string
 }
 
 
@@ -23,19 +24,20 @@ const PizzaCard: React.FC<PizzaCardProps> = ({ id, imageUrl, title, price, sizes
     const [activeType, setActiveType] = useState(0);
     const [activeSize, setActiveSize] = useState(0);
     const typeNames = ['тонкое', 'традиционное'];
-    const cartItem = useSelector((state) => state.cart.cartItems.find((obj) => obj.id === id));
+    const cartItem = useSelector((state: RootState) => state.cart.cartItems.find((obj) => obj.id === id));
     const addedCount = cartItem ? cartItem.count : 0;
 
     const dispatch = useDispatch();
 
     const onClickAdd = () => {
-        const item = {
+        const item: CartItem = {
             id,
             title,
             price,
             imageUrl,
             type: typeNames[activeType],
-            size: sizes[activeSize]
+            size: sizes[activeSize],
+            count: 0
         }
         dispatch(addItem(item));
     }

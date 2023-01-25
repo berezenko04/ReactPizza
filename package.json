@@ -17,6 +17,7 @@
     "@types/lodash.debounce": "^4.0.7",
     "@types/node": "^18.11.18",
     "@types/qs": "^6.9.7",
+    "@types/react-redux": "^7.1.25",
     "axios": "^1.2.2",
     "gh-pages": "^4.0.0",
     "lodash.debounce": "^4.0.8",
