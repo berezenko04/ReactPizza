@@ -54,8 +54,18 @@
             border-radius: 50%;
             transition: all .15s ease-in;
 
+            &:disabled {
+                border: 2px solid #D7D7D7;
 
-            &:hover {
+                svg {
+                    path {
+                        fill: #D7D7D7;
+                    }
+                }
+            }
+
+
+            &:not(:disabled):hover {
                 border: 2px solid #FE5F1E;
                 background-color: #FE5F1E;
 

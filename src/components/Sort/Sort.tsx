@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, memo } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import styles from './Sort.module.scss'
@@ -24,7 +24,7 @@ export const sortList: SortItem[] = [
 ];
 
 
-const Sort: React.FC = () => {
+const SortPopup: React.FC = memo(() => {
 
     const sortType = useSelector((state: RootState) => state.filter.sortType);
     const dispatch = useDispatch();
@@ -73,8 +73,8 @@ const Sort: React.FC = () => {
             </div >
         </div >
     )
-}
+})
 
 
 
-export default Sort
+export default SortPopup
