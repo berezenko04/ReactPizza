@@ -10,31 +10,21 @@ import Sort from '../../components/Sort/Sort'
 import PizzaCard from '../../components/PizzaCard/PizzaCard'
 import SkeletonCard from '../../components/SkeletonCard/SkeletonCard'
 import Search from '../../components/Search/Search'
-import { fetchPizza } from '../../redux/slices/pizzaSlice'
-import { RootState, useAppDispatch } from '../../redux/store'
+
+import { fetchPizza } from '../../redux/pizza/slice'
+import { useAppDispatch } from '../../redux/store'
+import { filterSelector } from '../../redux/filter/selectors'
+import { pizzaSelector } from '../../redux/pizza/selectors'
+import { searchValueSelector } from '../../redux/search/selectors'
 
 
 const Home: React.FC = () => {
 
-    const { categoryId, sortType } = useSelector((state: RootState) => state.filter);
-    const searchValue = useSelector((state: RootState) => state.search.searchValue);
-    const { items, status } = useSelector((state: RootState) => state.pizza);
+    const { categoryId, sortType } = useSelector(filterSelector);
+    const searchValue = useSelector(searchValueSelector);
+    const { items, status } = useSelector(pizzaSelector);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
-
-
-    // useEffect(() => {
-    //     if (window.location.search) {
-    //         const params = qs.parse(window.location.search.substring(1));
-    //         const sort = sortList.find(obj => obj.sortProperty === params.sortProperty);
-    //         dispatch(
-    //             setFilters({
-    //                 ...params,
-    //                 sort
-    //             })
-    //         )
-    //     }
-    // }, [])
 
     useEffect(() => {
         dispatch(fetchPizza({

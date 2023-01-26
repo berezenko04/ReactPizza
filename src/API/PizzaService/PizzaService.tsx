@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { PizzaItem } from '../../redux/slices/pizzaSlice';
+import { PizzaItem } from '../../redux/pizza/types'
 
 const DEFAULT__PATH__API = 'https://63b2bd1a5901da0ab36c3b06.mockapi.io';
 

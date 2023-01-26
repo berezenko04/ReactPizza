@@ -3,7 +3,8 @@ import { useDispatch } from 'react-redux'
 
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 import { ReactComponent as MinusIcon } from '../../assets/icons/minus.svg'
-import { addItem, CartItem, minusItem, removeItem } from '../../redux/slices/cartSlice'
+import { addItem, minusItem, removeItem } from '../../redux/cart/slice'
+import { CartItem } from '../../redux/cart/types'
 
 
 type CartItemProps = {
@@ -57,6 +58,9 @@ const CartItemBlock: React.FC<CartItemProps> = ({ id, title, price, count, image
             <span className={styles.cartItem__price}>{price * count} ₴</span>
             <button onClick={onClickRemove} className={styles.cartItem__remove}>
                 <PlusIcon className={styles.remove} />
+            </button>
+            <button onClick={onClickRemove} className={styles.cartItem__remove__md}>
+                Удалить товар
             </button>
         </div>
     )

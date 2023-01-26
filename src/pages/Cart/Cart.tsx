@@ -9,7 +9,8 @@ import { ReactComponent as BackIcon } from '../../assets/icons/arrow-left.svg'
 import { ReactComponent as SadIcon } from '../../assets/icons/sad.svg'
 import EmptyCart from '../../assets/img/empty-cart.webp'
 import CartItem from '../../components/CartItem/CartItem'
-import { cartSelector, clearItems } from '../../redux/slices/cartSlice'
+import { clearItems } from '../../redux/cart/slice'
+import { cartSelector } from '../../redux/cart/selectors'
 
 
 
@@ -80,9 +81,13 @@ const Cart: React.FC = () => {
                                                 <BackIcon />
                                                 <span>Вернуться назад</span>
                                             </Link>
-                                            <button className={styles.content__cart__bottom__buttons__pay}>
+                                            <a
+                                                href='https://send.monobank.ua/jar/A4EPiYX2RS'
+                                                target={'_blank'}
+                                                className={styles.content__cart__bottom__buttons__pay}
+                                            >
                                                 Оплатить сейчас
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </>

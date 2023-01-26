@@ -1,13 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { SortItem } from '../../components/Sort/Sort';
-
-
-
-
-interface FilterSliceState {
-    categoryId: number,
-    sortType: SortItem
-}
+import { FilterSliceState } from '../filter/types';
 
 const initialState: FilterSliceState = {
     categoryId: 0,

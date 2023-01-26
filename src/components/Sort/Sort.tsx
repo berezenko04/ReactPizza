@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import styles from './Sort.module.scss'
 
 import { ReactComponent as SortIcon } from '../../assets/icons/arrow-top.svg'
-import { setSortType } from '../../redux/slices/filterSlice'
-import { RootState } from '../../redux/store'
+import { setSortType } from '../../redux/filter/slice'
+import { sortTypeSelector } from '../../redux/filter/selectors'
 
 
 export type SortItem = {
@@ -26,7 +26,7 @@ export const sortList: SortItem[] = [
 
 const SortPopup: React.FC = memo(() => {
 
-    const sortType = useSelector((state: RootState) => state.filter.sortType);
+    const sortType = useSelector(sortTypeSelector);
     const dispatch = useDispatch();
     const sortRef = useRef<HTMLDivElement>(null);
     const [isOpened, setIsOpened] = useState(false);

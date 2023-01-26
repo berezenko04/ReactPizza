@@ -1,11 +1,20 @@
 .cartItem {
     display: grid;
     align-items: center;
-    grid-template-columns: 1fr 170px 120px 40px;
+    grid-template-columns: 1fr 140px 100px 40px;
     border-top: 1px solid #f6f6f6;
     padding-top: 30px;
     gap: 30px;
     width: 100%;
+
+    @media screen and (max-width:900px) {
+        grid-template-columns: 1fr 140px;
+    }
+
+    @media screen and (max-width:660px) {
+        grid-template-columns: 1fr 125px;
+        gap: 20px;
+    }
 
     &__left {
         display: flex;
@@ -36,6 +45,16 @@
                 line-height: 22px;
                 color: #8D8D8D;
             }
+
+            @media screen and (max-width:660px) {
+                h3 {
+                    font-size: 20px;
+                }
+
+                p {
+                    font-size: 16px;
+                }
+            }
         }
     }
 
@@ -43,6 +62,12 @@
         display: flex;
         align-items: center;
         gap: 12px;
+
+
+        @media screen and (max-width:900px) {
+            grid-column: 1;
+            grid-row: 2;
+        }
 
         button {
             width: 32px;
@@ -90,6 +115,11 @@
         font-size: 22px;
         line-height: 27px;
         color: #000000;
+
+
+        @media screen and (max-width:900px) {
+            justify-self: flex-end;
+        }
     }
 
     &__remove {
@@ -101,6 +131,10 @@
         align-items: center;
         justify-content: center;
         transition: all .15s ease-in;
+
+        @media screen and (max-width:900px) {
+            display: none;
+        }
 
         &:hover {
             border: 2px solid #000000;
@@ -119,6 +153,25 @@
 
             path {
                 fill: #D0D0D0;
+            }
+        }
+
+
+        &__md {
+            display: none;
+            border: 2px solid #D7D7D7;
+            padding: 8px 14px;
+            border-radius: 16px;
+            color: #D7D7D7;
+            font-size: 16px;
+
+            @media screen and (max-width:900px) {
+                display: block;
+                justify-self: flex-end;
+            }
+
+            @media screen and (max-width:660px) {
+                font-size: 14px;
             }
         }
     }

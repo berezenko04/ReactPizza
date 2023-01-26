@@ -1,19 +1,18 @@
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 
 
 import styles from './Categories.module.scss'
 
-import { setCategoryId } from '../../redux/slices/filterSlice';
-import { RootState } from '../../redux/store';
-import { useCallback } from 'react';
+import { setCategoryId } from '../../redux/filter/slice';
+import { categoryIdSelector } from '../../redux/filter/selectors';
 
 
 
 const Categories: React.FC = memo(() => {
 
 
-    const categoryId = useSelector((state: RootState) => state.filter.categoryId);
+    const categoryId = useSelector(categoryIdSelector);
     const dispatch = useDispatch();
 
     const handleChangeCategory = useCallback((id: number) => {

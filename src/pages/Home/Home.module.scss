@@ -37,6 +37,11 @@
         justify-content: space-between;
         gap: 24px;
 
+        @media screen and (max-width:800px) {
+            flex-direction: column;
+            text-align: center;
+        }
+
 
         h2 {
             font-weight: bold;

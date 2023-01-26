@@ -1,32 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import PizzaService from '../../API/PizzaService/PizzaService'
-import { SortItem } from "../../components/Sort/Sort"
-
-export type PizzaItem = {
-    id: string,
-    title: string,
-    price: number,
-    sizes: number[],
-    types: number[],
-    imageUrl: string
-}
-
-interface PizzaSliceState {
-    items: PizzaItem[],
-    status: Status
-}
-
-type FetchPizzaProps = {
-    categoryId: number,
-    sortType: SortItem,
-    searchValue: string
-}
-
-enum Status {
-    LOADING = 'loading',
-    SUCCESS = 'success',
-    ERROR = 'error'
-}
+import { PizzaSliceState, Status, FetchPizzaProps, PizzaItem } from "./types"
 
 const initialState: PizzaSliceState = {
     items: [],

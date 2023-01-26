@@ -19,27 +19,19 @@
         width: 20px;
         height: 20px;
         cursor: pointer;
-    }
 
-    // @media screen and (max-width:650px) {
-    //     max-width: 150px;
-    // }
+        path {
+            fill: #232323;
+        }
+    }
 
     input {
         padding: 10px 16px;
-
-        // @media screen and (max-width:500px) {
-        //     padding: 8px 15px;
-        // }
     }
 
     input,
     input::placeholder {
         font-size: 16px;
-
-        // @media screen and (max-width:650px) {
-        //     font-size: 14px;
-        // }
     }
 
     input::placeholder {

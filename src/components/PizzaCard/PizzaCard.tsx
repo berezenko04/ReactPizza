@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 
 import styles from './PizzaCard.module.scss'
 
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 
-import { addItem, CartItem } from '../../redux/slices/cartSlice'
+import { addItem } from '../../redux/cart/slice'
+import { CartItem } from '../../redux/cart/types'
 import { RootState } from '../../redux/store'
 
 type PizzaCardProps = {
@@ -44,13 +44,11 @@ const PizzaCard: React.FC<PizzaCardProps> = ({ id, imageUrl, title, price, sizes
 
     return (
         <div className={styles.pizzaBlock}>
-            <Link to={`/ReactPizza/pizza/${id}`}>
-                <img
-                    className={styles.pizzaBlock__image}
-                    src={imageUrl}
-                    alt="Pizza"
-                />
-            </Link>
+            <img
+                className={styles.pizzaBlock__image}
+                src={imageUrl}
+                alt="Pizza"
+            />
             <div className={styles.pizzaBlock__content}>
                 <h4 className={styles.pizzaBlock__content__title}>{title}</h4>
                 <div className={styles.pizzaBlock__content__selector}>

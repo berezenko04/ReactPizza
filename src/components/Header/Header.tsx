@@ -6,7 +6,7 @@ import styles from './Header.module.scss'
 import { ReactComponent as PizzaLogo } from '../../assets/icons/pizza-logo.svg'
 import { ReactComponent as CartIcon } from '../../assets/icons/cart.svg'
 import { useSelector } from 'react-redux'
-import { cartSelector } from '../../redux/slices/cartSlice'
+import { cartSelector } from '../../redux/cart/selectors'
 
 const Header: React.FC = () => {
 
@@ -28,7 +28,7 @@ const Header: React.FC = () => {
         <header className={styles.header}>
             <div className="container">
                 <div className={styles.header__wrapper}>
-                    <Link to='/ReactPizza' className={styles.header__logo}>
+                    <Link to='/ReactPizza/' className={styles.header__logo}>
                         <PizzaLogo className={styles.pizzaLogo} />
                         <div>
                             <h1>React Pizza</h1>

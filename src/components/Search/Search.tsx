@@ -6,7 +6,7 @@ import styles from './Search.module.scss'
 
 import { ReactComponent as SearchIcon } from '../../assets/icons/search.svg'
 import { ReactComponent as CancelIcon } from '../../assets/icons/close.svg'
-import { setSearchValue } from '../../redux/slices/searchSlice'
+import { setSearchValue } from '../../redux/search/slice'
 
 
 const Search: React.FC = () => {
