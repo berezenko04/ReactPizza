@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 import { ReactComponent as MinusIcon } from '../../assets/icons/minus.svg'
 import { addItem, CartItem, minusItem, removeItem } from '../../redux/slices/cartSlice'
-import { useAppDispatch } from '../../redux/store'
 
 
 type CartItemProps = {
@@ -19,7 +18,7 @@ type CartItemProps = {
 
 const CartItemBlock: React.FC<CartItemProps> = ({ id, title, price, count, imageUrl, type, size }) => {
 
-    const dispatch = useAppDispatch();
+    const dispatch = useDispatch();
 
     const onClickPlus = () => {
         dispatch(addItem({
@@ -51,7 +50,7 @@ const CartItemBlock: React.FC<CartItemProps> = ({ id, title, price, count, image
                 </div>
             </div>
             <div className={styles.cartItem__count}>
-                <button onClick={onClickMinus}><MinusIcon /></button>
+                <button disabled={count === 1} onClick={onClickMinus}><MinusIcon /></button>
                 <span>{count}</span>
                 <button onClick={onClickPlus}><PlusIcon /></button>
             </div>

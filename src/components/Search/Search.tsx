@@ -41,6 +41,7 @@ const Search: React.FC = () => {
                 placeholder='Поиск пиццы...'
                 onChange={onChangeInput}
                 value={value}
+                maxLength={16}
             />
             {value &&
                 <CancelIcon className={styles.cancelIcon} onClick={onClickClear} />}

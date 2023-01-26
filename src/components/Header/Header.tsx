@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
+import { useEffect, useRef } from 'react'
 
 import styles from './Header.module.scss'
 
@@ -13,6 +14,15 @@ const Header: React.FC = () => {
 
     const totalCount = cartItems.reduce((acc, item) => acc + item.count, 0);
     const location = useLocation();
+    const isMounted = useRef(false);
+
+    useEffect(() => {
+        if (isMounted.current) {
+            const json = JSON.stringify(cartItems);
+            localStorage.setItem('cart', json);
+        }
+        isMounted.current = true;
+    }, [cartItems])
 
     return (
         <header className={styles.header}>
