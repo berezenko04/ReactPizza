@@ -1,4 +1,4 @@
-import { lazy } from 'react'
+import { lazy, Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 import './App.scss'
@@ -18,7 +18,7 @@ const App = () => {
       <Routes>
         <Route path='/ReactPizza/' element={<Layout />}>
           <Route path='' element={<Home />} />
-          <Route path='cart' element={<Cart />} />
+          <Route path='cart' element={<Suspense><Cart /></Suspense>} />
           <Route path='*' element={<NotFound />} /> {/* Don't work with gh-pages */}
         </Route>
       </Routes>
