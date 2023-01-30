@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
-import PizzaService from '../../API/PizzaService/PizzaService'
+import { getPizza } from '../../API/PizzaService/PizzaService'
 import { PizzaSliceState, Status, FetchPizzaProps, PizzaItem } from "./types"
 
 const initialState: PizzaSliceState = {
@@ -11,7 +11,7 @@ export const fetchPizza = createAsyncThunk(
     'pizza/fetchPizzaStatus',
     async (params: FetchPizzaProps) => {
         const { categoryId, sortType, searchValue } = params;
-        const pizzas = await PizzaService.getPizza(categoryId, sortType, searchValue);
+        const pizzas = await getPizza(categoryId, sortType, searchValue);
         return pizzas;
     }
 )
